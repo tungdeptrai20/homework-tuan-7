@@ -1,0 +1,24 @@
+void findMinMaxBirths(Node* head) {
+    if (head == nullptr) return;
+
+    int maxBirths = head->births;
+    int minBirths = head->births;
+    int maxYear = head->year;
+    int minYear = head->year;
+
+    Node* current = head->next;
+    while (current != nullptr) {
+        if (current->births > maxBirths) {
+            maxBirths = current->births;
+            maxYear = current->year;
+        }
+        if (current->births < minBirths) {
+            minBirths = current->births;
+            minYear = current->year;
+        }
+        current = current->next;
+    }
+
+    std::cout << "Year with max births: " << maxYear << " (" << maxBirths << " births)" << std::endl;
+    std::cout << "Year with min births: " << minYear << " (" << minBirths << " births)" << std::endl;
+}
